@@ -13,7 +13,6 @@ import (
 	pb "mq_es_cache/my-asynq/internal/proto"
 	"mq_es_cache/my-asynq/internal/timeutil"
 
-	"github.com/go-redis/redis"
 	"github.com/golang/protobuf/ptypes"
 	"google.golang.org/protobuf/proto"
 )
@@ -744,7 +743,7 @@ type Broker interface {
 	ClearServerState(host string, pid int, serverID string) error
 
 	// Cancelation related methods
-	CancelationPubSub() (*redis.PubSub, error) // TODO: Need to decouple from redis to support other brokers
+	//CancelationPubSub() (*redis.PubSub, error) // TODO: Need to decouple from redis to support other brokers
 	PublishCancelation(id string) error
 
 	WriteResult(qname, id string, data []byte) (n int, err error)
